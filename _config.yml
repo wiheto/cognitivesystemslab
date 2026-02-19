@@ -1,0 +1,55 @@
+# Site Settings
+title: Cognitive Systems Lab
+description: Research and development in cognitive systems
+url: "" # Leave empty for local development
+baseurl: "" # Leave empty if deploying to root
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Theme Settings (if using a theme)
+# theme: minima
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .git
+  - .gitignore
+  - README.md
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Sass settings
+sass:
+  style: compressed
+
+# Collections
+collections:
+  pages:
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      author: Cognitive Systems Lab

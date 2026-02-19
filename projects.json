@@ -1,0 +1,33 @@
+{
+  "projects": [
+    {
+      "title": "Cognitive Landscape Project",
+      "description": "Depicting networks as snapshorts of cognitive processes over time.",
+      "person": "William Hedley Thompson"
+    },
+    {
+      "title": "Temporal nework theory in network neurosicence",
+      "description": "Here we have deeloped methods, software and applied to various problems in network neuroscience.",
+      "person": "William Hedley Thompson"
+    },
+    {
+      "title": "Patters of incivility online",
+      "description": "Exploring patters of uncivil communication in media comments and their underlying cognitive processes.",
+      "person": "Ben Clarke, William Hedley Thompson",
+      "publication_url": "https://journals.sagepub.com/doi/10.1177/14614448251359624",
+      "publication_title": "Fast and furious: Temporal patterns of incivility in online comments"
+    },
+    {
+      "title": "Metascience",
+      "description": "Here we consider how scientific research can be improved.",
+      "person": "William Hedley Thompson, Simon Skau",
+      "publication_url": "https://royalsocietypublishing.org/rsos/article/10/8/230607/92376/On-the-scope-of-scientific-hypothesesOn-the-scope",
+      "publication_title": "On the scope of scientific hypotheses"
+    },
+    {
+      "title": "Dense Pain",
+      "description": "With the pain neuroimaging lab at Karolinska Institutet, we are investigating fluctuations in chronic pain.",
+      "person": "William Hedley Thompson, KI Pain Neuroimaging Lab"
+    }
+  ]
+}
