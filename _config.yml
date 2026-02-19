@@ -1,8 +1,8 @@
 # Site Settings
 title: Cognitive Systems Lab
 description: Research and development in cognitive systems
-url: "https://wiheto.github.io" # GitHub Pages base URL
-baseurl: "/cognitivesystemslab" # Repository name for GitHub Pages project site
+url: "https://www.cognitivesystemslab.com" # Custom domain
+baseurl: "" # Empty for custom domain (GitHub Pages will handle subdomain automatically)
 
 # Build Settings
 markdown: kramdown

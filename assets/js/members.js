@@ -1,10 +1,17 @@
 (function () {
-  // Get base path from current location (works with GitHub Pages subdirectories)
-  // For GitHub Pages project sites, extract the repository name as base path
-  const pathname = window.location.pathname.replace(/\/$/, ''); // Remove trailing slash
-  const pathParts = pathname.split('/').filter(p => p);
-  // Get the first part (repository name) as base path, or empty if at root
-  const basePath = pathParts.length > 0 ? '/' + pathParts[0] : '';
+  // Get base path from current location
+  // For custom domains, use root. For GitHub Pages subdomain, use repository name
+  const hostname = window.location.hostname;
+  let basePath = '';
+  
+  // If on GitHub Pages subdomain (not custom domain), extract repository name
+  if (hostname.includes('github.io')) {
+    const pathname = window.location.pathname.replace(/\/$/, '');
+    const pathParts = pathname.split('/').filter(p => p);
+    basePath = pathParts.length > 0 ? '/' + pathParts[0] : '';
+  }
+  // For custom domain, basePath stays empty (root)
+  
   const MEMBERS_JSON_URL = basePath + '/members.json';
   const container = document.getElementById('members-list');
   if (!container) return;
@@ -135,18 +142,6 @@
     return div;
   }
 
-  function groupMembersByRole(members) {
-    const grouped = {};
-    members.forEach(function (member) {
-      const role = member.role || 'Other';
-      if (!grouped[role]) {
-        grouped[role] = [];
-      }
-      grouped[role].push(member);
-    });
-    return grouped;
-  }
-
   setStatus('Loading members…');
 
   fetch(MEMBERS_JSON_URL, {
@@ -169,41 +164,32 @@
         return;
       }
 
-      // Group by role
-      const grouped = groupMembersByRole(activeMembers);
-
-      // Sort roles: PI first, then alphabetically
+      // Sort members: PI first, then alphabetically by name
       const roleOrder = ['PI', 'Principal Investigator', 'Researcher', 'Postdoc', 'PhD', 'Student', 'Other'];
-      const sortedRoles = Object.keys(grouped).sort(function (a, b) {
-        const aIndex = roleOrder.indexOf(a);
-        const bIndex = roleOrder.indexOf(b);
-        if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
-        if (aIndex !== -1) return -1;
-        if (bIndex !== -1) return 1;
-        return a.localeCompare(b);
+      activeMembers.sort(function (a, b) {
+        // First, sort by role priority
+        const aRoleIndex = roleOrder.indexOf(a.role || 'Other');
+        const bRoleIndex = roleOrder.indexOf(b.role || 'Other');
+        if (aRoleIndex !== bRoleIndex) {
+          if (aRoleIndex === -1) return 1;
+          if (bRoleIndex === -1) return -1;
+          return aRoleIndex - bRoleIndex;
+        }
+        // Then alphabetically by name
+        return (a.name || '').localeCompare(b.name || '');
       });
 
       container.innerHTML = '';
 
-      sortedRoles.forEach(function (role) {
-        const roleSection = document.createElement('div');
-        roleSection.className = 'members-role-section';
+      // Create a single grid for all members
+      const membersGrid = document.createElement('div');
+      membersGrid.className = 'members-grid';
 
-        const roleHeading = document.createElement('h2');
-        roleHeading.className = 'members-role-heading';
-        roleHeading.textContent = role;
-        roleSection.appendChild(roleHeading);
-
-        const roleMembers = document.createElement('div');
-        roleMembers.className = 'members-grid';
-
-        grouped[role].forEach(function (member) {
-          roleMembers.appendChild(renderMember(member));
-        });
-
-        roleSection.appendChild(roleMembers);
-        container.appendChild(roleSection);
+      activeMembers.forEach(function (member) {
+        membersGrid.appendChild(renderMember(member));
       });
+
+      container.appendChild(membersGrid);
     })
     .catch(function (err) {
       setStatus('Could not load members. (' + (err.message || 'Unknown error') + ')', true);

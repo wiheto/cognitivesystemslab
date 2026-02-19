@@ -2,12 +2,19 @@
   // Base URL for each publication (you can change this later)
   const PUBLICATION_BASE_URL = 'https://gup.ub.gu.se/publication/';
 
-  // Get base path from current location (works with GitHub Pages subdirectories)
-  // For GitHub Pages project sites, extract the repository name as base path
-  const pathname = window.location.pathname.replace(/\/$/, ''); // Remove trailing slash
-  const pathParts = pathname.split('/').filter(p => p);
-  // Get the first part (repository name) as base path, or empty if at root
-  const basePath = pathParts.length > 0 ? '/' + pathParts[0] : '';
+  // Get base path from current location
+  // For custom domains, use root. For GitHub Pages subdomain, use repository name
+  const hostname = window.location.hostname;
+  let basePath = '';
+  
+  // If on GitHub Pages subdomain (not custom domain), extract repository name
+  if (hostname.includes('github.io')) {
+    const pathname = window.location.pathname.replace(/\/$/, '');
+    const pathParts = pathname.split('/').filter(p => p);
+    basePath = pathParts.length > 0 ? '/' + pathParts[0] : '';
+  }
+  // For custom domain, basePath stays empty (root)
+  
   const MEMBERS_JSON_URL = basePath + '/members.json';
 
   const container = document.getElementById('publication-list');
