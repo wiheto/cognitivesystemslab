@@ -1,5 +1,10 @@
 (function () {
-  const PROJECTS_JSON_URL = '/projects.json';
+  // Get base path from current location (works with GitHub Pages subdirectories)
+  // Extract directory path from current URL
+  const pathParts = window.location.pathname.split('/').filter(p => p);
+  pathParts.pop(); // Remove current page/filename
+  const basePath = pathParts.length > 0 ? '/' + pathParts.join('/') : '';
+  const PROJECTS_JSON_URL = basePath + '/projects.json';
   const container = document.getElementById('research-project-list');
   if (!container) return;
 

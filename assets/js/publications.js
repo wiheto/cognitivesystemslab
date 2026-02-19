@@ -2,8 +2,12 @@
   // Base URL for each publication (you can change this later)
   const PUBLICATION_BASE_URL = 'https://gup.ub.gu.se/publication/';
 
-  // Members JSON file path
-  const MEMBERS_JSON_URL = '/members.json';
+  // Get base path from current location (works with GitHub Pages subdirectories)
+  // Extract directory path from current URL
+  const pathParts = window.location.pathname.split('/').filter(p => p);
+  pathParts.pop(); // Remove current page/filename
+  const basePath = pathParts.length > 0 ? '/' + pathParts.join('/') : '';
+  const MEMBERS_JSON_URL = basePath + '/members.json';
 
   const container = document.getElementById('publication-list');
   if (!container) return;
