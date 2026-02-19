@@ -1,9 +1,10 @@
 (function () {
   // Get base path from current location (works with GitHub Pages subdirectories)
-  // Extract directory path from current URL
-  const pathParts = window.location.pathname.split('/').filter(p => p);
-  pathParts.pop(); // Remove current page/filename
-  const basePath = pathParts.length > 0 ? '/' + pathParts.join('/') : '';
+  // For GitHub Pages project sites, extract the repository name as base path
+  const pathname = window.location.pathname.replace(/\/$/, ''); // Remove trailing slash
+  const pathParts = pathname.split('/').filter(p => p);
+  // Get the first part (repository name) as base path, or empty if at root
+  const basePath = pathParts.length > 0 ? '/' + pathParts[0] : '';
   const MEMBERS_JSON_URL = basePath + '/members.json';
   const container = document.getElementById('members-list');
   if (!container) return;
