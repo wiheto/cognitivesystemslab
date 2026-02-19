@@ -9,7 +9,7 @@ title: Home
   </div>
   <div class="hero-right">
     <div class="hero-card">
-      <h1>Understanding Brain, Behavior, and Society as Interacting Systems in Time</h1>
+      <h1>Understanding Brain, Behavior, and Society as Interacting Systems</h1>
       <p>The cognitive dynamics lab at the University of Gothenburg is part of the cognitive science collegium at the Faculty of Science and Technology.</p>
       <a href="{{ '/research' | relative_url }}" class="cta-button">Our Research</a>
     </div>

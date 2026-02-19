@@ -8,7 +8,7 @@ title: Research
     <h1>Research</h1>
     
     <p class="research-intro">
-      Our research focuses on understanding brain, behavior, and society as <strong>interacting systems</strong>. We often investigate temporal and networked phenomena with a variety of interdisciplinary topics and methods. Our goal is to understand the flexibility of cognition and its impact on society.
+      Our research focuses on understanding brain, behavior, and society as <strong>complex interacting systems</strong>. We often investigate temporal and networked phenomena with a variety of interdisciplinary topics and methods. Our goal is to understand the flexibility of cognition and its impact on society.
     </p>
 
     <h2>Projects</h2>

@@ -12,7 +12,7 @@ title: About
     </p>
     
     <p>
-      Our research focuses on understanding brain, behavior, and society as interacting systems in time. We combine computational modeling, experimental methods, and theoretical frameworks to explore the dynamic nature of cognitive processes and their interactions with social and environmental factors.
+      Our research focuses on understanding brain, behavior, and society as interacting systems. We combine computational modeling, experimental methods, and theoretical frameworks to explore the dynamic nature of cognitive processes and their interactions with social and environmental factors.
     </p>
 
   </div>
